@@ -1,0 +1,1256 @@
+---
+title: "Recess Leagues"
+description: "Meta description for the page"
+permalink: "/"
+tags: "sitemap" # content/content.json will make sure that all pages in content/ are marked with a "sitemap" tag, for automatic sitemap generation. As index.html is not in content/, we need to add it here to ensure the root page is included in the sitemap generation
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <!-- Critical styles are loaded first -->
+    <link rel="stylesheet" href="/assets/css/critical.css"/>
+
+    <!-- If we're in production, defer the rest of the home page styles. In development, always load it. Otherwise the site will break when hot-reload is used. -->
+    {% if client.isProduction %}
+        <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet" href="/assets/css/local.css">
+        </noscript>
+
+    {% else %}
+        <link rel="stylesheet" href="/assets/css/local.css"/>
+    {% endif %}
+
+    <!-- To ensure proper validation, prevent errors, and encourage developers to check, schema's are an opt-in feature. They're very bespoke and requires some customising  -->
+    <!-- Uncomment the code below to enable Structured Data, and test it when you deploy to Netlify - https://developers.google.com/search/docs/appearance/structured-data -->
+    <!-- {% include "components/home-schema.html" %} -->
+{% endblock %}
+
+{% block body %}
+
+<!-- ============================================ -->
+<!--                   Hero                       -->
+<!-- ============================================ -->
+
+<section id="hero-1905" aria-label="Featured campaigns">
+    <div class="cs-slider">
+
+        <!-- ═══ SLIDE 1 ═══ -->
+        <div class="cs-slide cs-active" aria-hidden="false">
+            <div class="cs-slide-content">
+                <h1 class="cs-title">Train Like<br>You Mean It.</h1>
+                <p class="cs-text">Toronto's premier strength and conditioning gym. No fluff. Just work.</p>
+                <div class="cs-button-group">
+                    <a href="/memberships" class="cs-hero-btn">Explore Memberships</a>
+                    <a href="/programs" class="cs-hero-btn cs-hero-btn-outline">Our Programs</a>
+                </div>
+            </div>
+            <picture class="cs-background">
+                <source media="(max-width: 600px)" srcset="/assets/images/hero-1-mobile.webp">
+                <img src="https://static.nike.com/a/images/f_auto/dpr_2.0,cs_srgb/w_1879,c_limit/9e70883a-b77a-47d2-885d-5df16e6c5153/nike-just-do-it.jpg" alt="Athlete training at Recess Athletic Club" loading="eager" decoding="async" fetchpriority="high">
+            </picture>
+        </div>
+
+        <!-- ═══ SLIDE 2 ═══ -->
+        <div class="cs-slide" aria-hidden="true">
+            <div class="cs-slide-content">
+                <h1 class="cs-title">Recovery<br>Is The Work.</h1>
+                <p class="cs-text">Cold plunge, sauna, and compression therapy — because getting better never stops.</p>
+                <div class="cs-button-group">
+                    <a href="/recovery" class="cs-hero-btn">Book Recovery</a>
+                    <a href="/about" class="cs-hero-btn cs-hero-btn-outline">Learn More</a>
+                </div>
+            </div>
+            <picture class="cs-background">
+                <source media="(max-width: 600px)" srcset="/assets/images/hero-2-mobile.webp">
+                <img src="https://static.nike.com/a/images/f_auto/dpr_2.0,cs_srgb/w_1879,c_limit/9b59c458-6f41-4bdc-94b1-4f1a7cfb589e/nike-just-do-it.png" alt="Recovery suite at Recess Athletic Club" loading="lazy" decoding="async">
+            </picture>
+        </div>
+
+        <!-- ═══ SLIDE 3 ═══ -->
+        <div class="cs-slide" aria-hidden="true">
+            <div class="cs-slide-content">
+                <h1 class="cs-title">Summer<br>Sessions Live.</h1>
+                <p class="cs-text">Outdoor conditioning every Saturday morning. Drop in or bring the crew.</p>
+                <div class="cs-button-group">
+                    <a href="/schedule" class="cs-hero-btn">View Schedule</a>
+                </div>
+            </div>
+            <picture class="cs-background">
+                <source media="(max-width: 600px)" srcset="/assets/images/hero-3-mobile.webp">
+                <img src="https://nmp.about.nike.com/about/prod/5c44c5a3-5898-4ec7-93ff-5e970075b12f/nike-st-flare-4.jpeg?m=eyJlZGl0cyI6eyJqcGVnIjp7InF1YWxpdHkiOjEwMH0sIndlYnAiOnsicXVhbGl0eSI6MTAwfSwiZXh0cmFjdCI6eyJsZWZ0IjowLCJ0b3AiOjAsIndpZHRoIjozMjAwLCJoZWlnaHQiOjIxMzR9LCJyZXNpemUiOnsid2lkdGgiOjM4NDB9fX0%3D&s=c7935ed404592c905fe7fc9be844a760b18a127ae2278ca371112045c4e4e231" alt="Outdoor training session at Recess Athletic Club" loading="lazy" decoding="async">
+            </picture>
+        </div>
+
+        <!-- ═══ CONTROLS ═══ -->
+        <div class="cs-controls">
+            <!-- Dot navigation — bottom center -->
+            <div class="cs-dots" role="tablist" aria-label="Slides">
+                <button class="cs-dot cs-active" role="tab" aria-selected="true"  aria-label="Slide 1" data-index="0"></button>
+                <button class="cs-dot"            role="tab" aria-selected="false" aria-label="Slide 2" data-index="1"></button>
+                <button class="cs-dot"            role="tab" aria-selected="false" aria-label="Slide 3" data-index="2"></button>
+            </div>
+
+            <!-- Prev / Next / Pause — bottom right -->
+            <div class="cs-nav-buttons">
+                <button class="cs-nav-btn cs-pause" aria-label="Pause autoplay">
+                    <!-- Progress ring -->
+                    <svg class="cs-progress-ring" viewBox="0 0 44 44" aria-hidden="true">
+                        <circle class="cs-ring-track" cx="22" cy="22" r="19"/>
+                        <circle class="cs-ring-fill"  cx="22" cy="22" r="19"/>
+                    </svg>
+                    <!-- Pause icon (shown when playing) -->
+                    <svg class="cs-icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <rect x="6"  y="4" width="4" height="16" rx="1"/>
+                        <rect x="14" y="4" width="4" height="16" rx="1"/>
+                    </svg>
+                    <!-- Play icon (shown when paused) -->
+                    <svg class="cs-icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <polygon points="5,3 19,12 5,21"/>
+                    </svg>
+                </button>
+                <button class="cs-nav-btn cs-prev" aria-label="Previous slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="cs-nav-btn cs-next" aria-label="Next slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <polyline points="9 18 15 12 9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- End Controls -->
+
+    </div>
+    <!-- End Slider -->
+</section>
+
+<script>// ============================================
+//              Hero Slider — #hero-1905
+// ============================================
+
+(function () {
+    const section  = document.querySelector('#hero-1905');
+    if (!section) return;
+
+    const slides   = section.querySelectorAll('.cs-slide');
+    const dots     = section.querySelectorAll('.cs-dot');
+    const pauseBtn = section.querySelector('.cs-pause');
+    const prevBtn  = section.querySelector('.cs-prev');
+    const nextBtn  = section.querySelector('.cs-next');
+    const ringFill = section.querySelector('.cs-ring-fill');
+
+    let current    = 0;
+    let paused     = false;
+    let interval   = null;
+    const DURATION = 6000; // ms — must match ringProgress duration in LESS
+    const RING_C   = 119.38; // 2π × r(19) — circumference of the SVG circle
+
+    // Initialise dasharray/offset here so LESS doesn't need to hardcode it
+    ringFill.style.strokeDasharray  = RING_C;
+    ringFill.style.strokeDashoffset = RING_C;
+
+    // ── Ring helpers ──
+    // offsetHeight reflow doesn't work on SVG elements — use double rAF instead.
+    // Frame 1: browser paints animation:none (ring cleared)
+    // Frame 2: browser paints the new animation (ring restarts from 0)
+    function resetRing() {
+        ringFill.style.animation = 'none';
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                ringFill.style.animation = `ringProgress ${DURATION}ms linear forwards`;
+            });
+        });
+    }
+
+    function freezeRing() {
+        ringFill.style.animationPlayState = 'paused';
+    }
+
+    function resumeRing() {
+        ringFill.style.animationPlayState = 'running';
+    }
+
+    // ── Slide transition ──
+    function goTo(index) {
+        const outgoing = slides[current];
+
+        // Update dots + aria
+        dots[current].classList.remove('cs-active');
+        dots[current].setAttribute('aria-selected', 'false');
+
+        current = (index + slides.length) % slides.length;
+
+        const incoming = slides[current];
+
+        dots[current].classList.add('cs-active');
+        dots[current].setAttribute('aria-selected', 'true');
+
+        // KEY FIX: add .cs-exit WITHOUT removing .cs-active yet.
+        // Because .cs-exit is declared after .cs-active in the CSS, it wins
+        // the transform battle — so the slide transitions from translateX(0)
+        // to translateX(-100%) cleanly, with no snap back to 100%.
+        outgoing.classList.add('cs-exit');
+        outgoing.setAttribute('aria-hidden', 'true');
+
+        incoming.classList.add('cs-active');
+        incoming.setAttribute('aria-hidden', 'false');
+
+        // Disable transition for the instant reset, then re-enable.
+        // Without this, removing the classes animates the slide back to
+        // translateX(100%) which is the "going the other way" glitch.
+        outgoing.addEventListener('transitionend', () => {
+            outgoing.style.transition = 'none';
+            outgoing.classList.remove('cs-active', 'cs-exit');
+            outgoing.offsetWidth; // force reflow before restoring transition
+            outgoing.style.transition = '';
+        }, { once: true });
+
+        if (!paused) resetRing();
+    }
+
+    function startAutoplay() {
+        clearInterval(interval);
+        resetRing();
+        interval = setInterval(() => goTo(current + 1), DURATION);
+    }
+
+    function stopAutoplay() {
+        clearInterval(interval);
+        freezeRing();
+    }
+
+    // ── Pause / Resume ──
+    pauseBtn.addEventListener('click', () => {
+        paused = !paused;
+        pauseBtn.classList.toggle('cs-is-paused', paused);
+        pauseBtn.setAttribute('aria-label', paused ? 'Resume autoplay' : 'Pause autoplay');
+        if (paused) {
+            stopAutoplay();
+        } else {
+            // Resume: restart the ring + timer from the top rather than
+            // mid-animation, which is cleaner UX for a slideshow
+            startAutoplay();
+        }
+    });
+
+    // ── Prev / Next ──
+    prevBtn.addEventListener('click', () => {
+        goTo(current - 1);
+        if (!paused) startAutoplay();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        goTo(current + 1);
+        if (!paused) startAutoplay();
+    });
+
+    // ── Dot Navigation ──
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            goTo(parseInt(dot.dataset.index, 10));
+            if (!paused) startAutoplay();
+        });
+    });
+
+    // ── Keyboard support ──
+    section.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft')  { goTo(current - 1); if (!paused) startAutoplay(); }
+        if (e.key === 'ArrowRight') { goTo(current + 1); if (!paused) startAutoplay(); }
+    });
+
+    // ── Tab visibility ──
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        stopAutoplay();
+    } else if (!paused) {
+        startAutoplay(); // resets ring + interval from clean state
+    }
+});
+
+
+    // ── Respect reduced motion ──
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        paused = true;
+        pauseBtn.classList.add('cs-is-paused');
+    } else {
+        startAutoplay();
+    }
+})();</script>
+
+<!-- ============================================ -->
+<!--                   About                      -->
+<!-- ============================================ -->
+
+<section id="about-1627">
+    <div class="cs-container">
+        <div class="cs-top">
+            <span class="cs-topper">
+                Who We Are
+            </span>
+            <h2 class="cs-title">A basketball league for players who want to compete, connect, and enjoy the game.</h2>
+        </div>
+    </div>
+
+    <!-- ── Marquee Image Strip ── -->
+    <div class="cs-gallery" aria-label="Gym photos" aria-hidden="true">
+        <div class="cs-gallery-track">
+            <!-- Original set -->
+            <div class="cs-gallery-item">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a232f4add53bd0bb6248cc8_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%206.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="cs-gallery-item">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233066c657a0554208ae1b_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%202.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="cs-gallery-item">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a2325915ed843b2ef10278b_BLR365_May28th103.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="cs-gallery-item">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a232c8fc624eaccf8799269_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%204.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="cs-gallery-item">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233b7fb4005e9c2c8c1479_DSCF8518-2.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <!-- Duplicated set — creates the seamless loop -->
+            <div class="cs-gallery-item" aria-hidden="true">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a232f4add53bd0bb6248cc8_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%206.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="cs-gallery-item" aria-hidden="true">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233066c657a0554208ae1b_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%202.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="cs-gallery-item" aria-hidden="true">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a2325915ed843b2ef10278b_BLR365_May28th103.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="cs-gallery-item" aria-hidden="true">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a232c8fc624eaccf8799269_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%204.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="cs-gallery-item" aria-hidden="true">
+                <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233b7fb4005e9c2c8c1479_DSCF8518-2.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+(function () {
+    const track = document.querySelector('#about-1627 .cs-gallery-track');
+    if (!track) return;
+
+    document.addEventListener('visibilitychange', () => {
+        track.style.animationPlayState = document.hidden ? 'paused' : '';
+    });
+})();</script>
+
+<!-- ============================================ -->
+<!--              League Experience               -->
+<!-- ============================================ -->
+
+<section id="league-1842">
+
+    <!-- ── Background images — crossfade per feature on hover ── -->
+    <div class="cs-bg-wrap" aria-hidden="true">
+        <div class="cs-bg">
+            <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a232f4add53bd0bb6248cc8_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%206.jpg" alt="">
+        </div>
+        <div class="cs-bg">
+            <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233066c657a0554208ae1b_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%202.jpg" alt="">
+        </div>
+        <div class="cs-bg">
+            <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233b7fb4005e9c2c8c1479_DSCF8518-2.jpg" alt="">
+        </div>
+        <div class="cs-bg">
+            <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a2325915ed843b2ef10278b_BLR365_May28th103.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- ── Cursor-following CTA pill (desktop only) ── -->
+    <a href="/register" class="cs-cursor-cta" aria-hidden="true" tabindex="-1">
+        Register Now
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <polyline points="9 3 14 8 9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+
+    <div class="cs-container">
+
+        <!-- ── Topper ── -->
+        <p class="cs-topper">Every season is built to give you real competition, real coverage, and something worth playing for.</p>
+
+        <!-- ── Feature List ── -->
+        <ul class="cs-features" role="list">
+
+            <li class="cs-feature" data-index="0">
+                <span class="cs-feature-title">7 Games + Playoffs</span>
+                <div class="cs-feature-detail" aria-hidden="true">
+                    <p class="cs-feature-text">Competitive regular season with guaranteed playoff action every season.</p>
+                    <a href="/register" class="cs-feature-cta">
+                        Register Now
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <polyline points="9 3 14 8 9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="cs-feature" data-index="1">
+                <span class="cs-feature-title">Full Game Coverage</span>
+                <div class="cs-feature-detail" aria-hidden="true">
+                    <p class="cs-feature-text">Every game professionally recorded and on YouTube before the week is out.</p>
+                    <a href="/register" class="cs-feature-cta">
+                        Register Now
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <polyline points="9 3 14 8 9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="cs-feature" data-index="2">
+                <span class="cs-feature-title">Season Stats</span>
+                <div class="cs-feature-detail" aria-hidden="true">
+                    <p class="cs-feature-text">Points, rebounds, assists — tracked by official scorekeepers every game.</p>
+                    <a href="/register" class="cs-feature-cta">
+                        Register Now
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <polyline points="9 3 14 8 9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="cs-feature" data-index="3">
+                <span class="cs-feature-title">Championship Rings</span>
+                <div class="cs-feature-detail" aria-hidden="true">
+                    <p class="cs-feature-text">Real championship rings and gear for the team that rises to the top.</p>
+                    <a href="/register" class="cs-feature-cta">
+                        Register Now
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <polyline points="9 3 14 8 9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </li>
+
+        </ul>
+
+        <!-- ── Bottom CTA ── -->
+        <div class="cs-bottom">
+            <a href="/register" class="cs-bottom-cta">Join the League</a>
+        </div>
+
+    </div>
+</section>
+
+<script>
+(function () {
+    const section   = document.querySelector('#league-1842');
+    if (!section) return;
+
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    const features  = section.querySelectorAll('.cs-feature');
+    const bgs       = section.querySelectorAll('.cs-bg');
+    const cursorCta = section.querySelector('.cs-cursor-cta');
+
+    let mouseX = 0, mouseY = 0;
+    let rafId  = null;
+
+    // ── Smooth cursor follow ──
+    function moveCta() {
+        cursorCta.style.left = mouseX + 'px';
+        cursorCta.style.top  = mouseY + 'px';
+        rafId = null;
+    }
+
+    section.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!rafId) rafId = requestAnimationFrame(moveCta);
+    });
+
+    // ── Activate / deactivate ──
+    function activate(i) {
+        features.forEach((f, j) => f.classList.toggle('cs-active', i === j));
+        bgs.forEach((b, j)      => b.classList.toggle('cs-active', i === j));
+        cursorCta.classList.add('cs-visible');
+        // Point the pill's href at the right link if needed
+        cursorCta.href = features[i].dataset.href || '/register';
+    }
+
+    function deactivate() {
+        features.forEach(f => f.classList.remove('cs-active'));
+        bgs.forEach(b      => b.classList.remove('cs-active'));
+        cursorCta.classList.remove('cs-visible');
+    }
+
+    features.forEach((feature, i) => {
+        feature.addEventListener('mouseenter', () => activate(i));
+        feature.addEventListener('mouseleave', deactivate);
+        feature.addEventListener('click', () => {
+            window.location.href = feature.dataset.href || '/register';
+        });
+        feature.style.cursor = 'none';
+    });
+
+    section.addEventListener('mouseleave', deactivate);
+})();
+</script>
+
+<!-- ============================================ -->
+<!--              The Journey                     -->
+<!-- ============================================ -->
+
+<section id="journey-2847">
+
+    <!-- ── Marquee ticker ── -->
+    <div class="cs-ticker" aria-hidden="true">
+        <div class="cs-ticker-track">
+            <span>How It Works</span><span class="cs-sep">•</span>
+            <span>How It Works</span><span class="cs-sep">•</span>
+            <span>How It Works</span><span class="cs-sep">•</span>
+            <span>How It Works</span><span class="cs-sep">•</span>
+            <span>How It Works</span><span class="cs-sep">•</span>
+            <span>How It Works</span><span class="cs-sep">•</span>
+            <span>How It Works</span><span class="cs-sep">•</span>
+            <span>How It Works</span><span class="cs-sep">•</span>
+        </div>
+    </div>
+
+    <!-- ── Scroll driver — 4 × 100vh ── -->
+    <div class="cs-scroll-driver">
+        <div class="cs-sticky-panel">
+
+            <!-- ── Left: step content ── -->
+            <div class="cs-panel-left">
+
+                <div class="cs-step cs-active" data-step="0">
+                    <span class="cs-step-topper">
+                        <span class="cs-dot" aria-hidden="true"></span>
+                        Arrival — Register
+                    </span>
+                    <h2 class="cs-step-title">Lock In Your Spot</h2>
+                    <p class="cs-step-text">Come as a full team or a free agent — we'll place you. Pick your division and lock in before spots fill.</p>
+                    <a href="/register" class="cs-button-solid">
+                        <span class="cs-button-label">Register Now</span>
+                        <span class="cs-button-circle"></span>
+                        <span class="cs-button-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="cs-step" data-step="1">
+                    <span class="cs-step-topper">
+                        <span class="cs-dot" aria-hidden="true"></span>
+                        Ready — Media Day
+                    </span>
+                    <h2 class="cs-step-title">Look the Part</h2>
+                    <p class="cs-step-text">Every player gets professional portraits and a player card before tip-off. Invite your family — this is where it starts to feel real.</p>
+                    <a href="/media-day" class="cs-button-solid">
+                        <span class="cs-button-label">Learn More</span>
+                        <span class="cs-button-circle"></span>
+                        <span class="cs-button-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="cs-step" data-step="2">
+                    <span class="cs-step-topper">
+                        <span class="cs-dot" aria-hidden="true"></span>
+                        Compete — Play
+                    </span>
+                    <h2 class="cs-step-title">Grind the Season</h2>
+                    <p class="cs-step-text">Seven regular season games. Certified refs, official scorekeeping, and your stats tracked every game. Full game footage on YouTube by Monday.</p>
+                    <a href="/schedule" class="cs-button-solid">
+                        <span class="cs-button-label">View Schedule</span>
+                        <span class="cs-button-circle"></span>
+                        <span class="cs-button-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="cs-step" data-step="3">
+                    <span class="cs-step-topper">
+                        <span class="cs-dot" aria-hidden="true"></span>
+                        Glory — Win It All
+                    </span>
+                    <h2 class="cs-step-title">Championship Night</h2>
+                    <p class="cs-step-text">The bracket drops. Every game is elimination. Win it all and you're walking out with a ring and a gym full of people who watched you earn it.</p>
+                    <a href="/register" class="cs-button-solid">
+                        <span class="cs-button-label">Register Now</span>
+                        <span class="cs-button-circle"></span>
+                        <span class="cs-button-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Progress dots -->
+                <div class="cs-progress-dots" aria-hidden="true">
+                    <span class="cs-pdot cs-active"></span>
+                    <span class="cs-pdot"></span>
+                    <span class="cs-pdot"></span>
+                    <span class="cs-pdot"></span>
+                </div>
+
+                <!-- Step counter -->
+                <div class="cs-step-counter" aria-hidden="true">
+                    <span class="cs-count-current">01</span>
+                    <span class="cs-count-sep">/</span>
+                    <span class="cs-count-total">04</span>
+                </div>
+
+            </div>
+
+            <!-- ── Right: images ── -->
+            <div class="cs-panel-right">
+
+                <div class="cs-img-panel cs-active" data-image="0">
+                    <span class="cs-img-pill">Register</span>
+                    <picture>
+                        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a232f4add53bd0bb6248cc8_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%206.jpg" alt="Registration" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+
+                <div class="cs-img-panel" data-image="1">
+                    <span class="cs-img-pill">Media Day</span>
+                    <picture>
+                        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233066c657a0554208ae1b_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%202.jpg" alt="Media Day" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+
+                <div class="cs-img-panel" data-image="2">
+                    <span class="cs-img-pill">Season Play</span>
+                    <picture>
+                        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a2325915ed843b2ef10278b_BLR365_May28th103.jpg" alt="Season games" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+
+                <div class="cs-img-panel" data-image="3">
+                    <span class="cs-img-pill">Championship</span>
+                    <picture>
+                        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233b7fb4005e9c2c8c1479_DSCF8518-2.jpg" alt="Championship night" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<script>
+// ── Scroll-driven ticker ──
+(function () {
+    const track = document.querySelector('#journey-2847 .cs-ticker-track');
+    if (!track) return;
+
+    const SPEED = 0.15;
+
+    function update() {
+        const offset = (window.scrollY * SPEED) % (track.scrollWidth / 2);
+        track.style.transform = `translateX(-${offset}px)`;
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+})();
+
+// ── Scroll-driven steps ──
+(function () {
+    const section = document.querySelector('#journey-2847');
+    if (!section) return;
+
+    const driver  = section.querySelector('.cs-scroll-driver');
+    const steps   = section.querySelectorAll('.cs-step');
+    const images  = section.querySelectorAll('.cs-img-panel');
+    const dots    = section.querySelectorAll('.cs-pdot');
+    const counter = section.querySelector('.cs-count-current');
+
+    const TOTAL = steps.length;
+    let current = 0;
+
+    // Only enable on desktop — mobile shows stacked layout
+    const isDesktop = () => window.innerWidth >= 1024;
+
+    function setStep(index) {
+        if (index === current) return;
+        const prev = current;
+        current = index;
+
+        steps.forEach((s, i) => {
+            s.classList.remove('cs-active', 'cs-exit');
+            if (i === index) s.classList.add('cs-active');
+            if (i === prev)  s.classList.add('cs-exit');
+        });
+
+        images.forEach((img, i) => img.classList.toggle('cs-active', i === index));
+        dots.forEach((d, i)   => d.classList.toggle('cs-active',   i === index));
+
+        if (counter) counter.textContent = String(index + 1).padStart(2, '0');
+    }
+
+    function onScroll() {
+        if (!isDesktop()) return;
+
+        const rect = driver.getBoundingClientRect();
+        const scrolledPx    = -rect.top;
+        const totalScrollable = driver.offsetHeight - window.innerHeight;
+        const progress = Math.max(0, Math.min(scrolledPx / totalScrollable, 1));
+
+        const index = Math.min(Math.floor(progress * TOTAL), TOTAL - 1);
+        setStep(index);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+
+<!-- ============================================ -->
+<!--              Skill Divisions                 -->
+<!-- ============================================ -->
+
+<section id="divisions-2241">
+    <div class="cs-container">
+
+        <!-- ── Split Header ── -->
+        <div class="cs-header">
+            <div class="cs-header-left">
+                <span class="cs-topper">Skill Divisions</span>
+                <h2 class="cs-title">Find Your Level.</h2>
+            </div>
+            <p class="cs-text">Every team is placed by skill so games stay competitive and fun. Start where you are and move up as your squad grows.</p>
+        </div>
+
+        <!-- ── Carousel ── -->
+        <div class="cs-carousel-outer">
+            <div class="cs-carousel-track">
+
+                <!-- ═══ Card 1 — D5 Rookie ═══ -->
+                <article class="cs-card">
+                    <picture class="cs-card-bg">
+                        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a232f4add53bd0bb6248cc8_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%206.jpg" alt="D5 Rookie players on court" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="cs-card-content">
+                        <div class="cs-card-top">
+                            <div class="cs-card-tags">
+                                <span class="cs-tag">Foundation</span>
+                                <span class="cs-tag">Learning</span>
+                                <span class="cs-tag">Effort</span>
+                            </div>
+                            <h3 class="cs-card-tier">D5 Rookie</h3>
+                            <p class="cs-card-text">D5 is for those learning the fundamentals, building confidence, and getting their first real taste of organized ball.</p>
+                        </div>
+                        <div class="cs-card-footer">
+                            <span class="cs-card-stat">250+ Teams</span>
+                            <a href="/register" class="cs-card-btn">Start as a Rookie</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ═══ Card 2 — D4 Rec ═══ -->
+                <article class="cs-card">
+                    <picture class="cs-card-bg">
+                        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a233066c657a0554208ae1b_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%202.jpg" alt="D4 Rec players competing" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="cs-card-content">
+                        <div class="cs-card-top">
+                            <div class="cs-card-tags">
+                                <span class="cs-tag">Development</span>
+                                <span class="cs-tag">Grind</span>
+                                <span class="cs-tag">Elevate</span>
+                            </div>
+                            <h3 class="cs-card-tier">D4 Rec</h3>
+                            <p class="cs-card-text">D4 is for players sharpening their skills, improving their game IQ, showing flashes of potential.</p>
+                        </div>
+                        <div class="cs-card-footer">
+                            <span class="cs-card-stat">500+ Teams</span>
+                            <a href="/register" class="cs-card-btn">Play at the Rec Level</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ═══ Card 3 — D3 Inter ═══ -->
+                <article class="cs-card">
+                    <picture class="cs-card-bg">
+                        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a2325915ed843b2ef10278b_BLR365_May28th103.jpg" alt="D3 Inter players in action" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="cs-card-content">
+                        <div class="cs-card-top">
+                            <div class="cs-card-tags">
+                                <span class="cs-tag">Skill</span>
+                                <span class="cs-tag">Execution</span>
+                                <span class="cs-tag">Focus</span>
+                            </div>
+                            <h3 class="cs-card-tier">D3 Inter</h3>
+                            <p class="cs-card-text">D3 players are consistent, confident, and ready to compete at pace. You know the systems and bring it every night.</p>
+                        </div>
+                        <div class="cs-card-footer">
+                            <span class="cs-card-stat">300+ Teams</span>
+                            <a href="/register" class="cs-card-btn">Compete with Inter</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ═══ Card 4 — D2 Comp ═══ -->
+                <article class="cs-card">
+                    <picture class="cs-card-bg">
+                        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a232c8fc624eaccf8799269_Screenshot%202026-06-05%20at%203.42.43%E2%80%AFPM%204.jpg" alt="D2 Comp players" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="cs-card-content">
+                        <div class="cs-card-top">
+                            <div class="cs-card-tags">
+                                <span class="cs-tag">Pressure</span>
+                                <span class="cs-tag">Poise</span>
+                                <span class="cs-tag">Prepared</span>
+                            </div>
+                            <h3 class="cs-card-tier">D2 Comp</h3>
+                            <p class="cs-card-text">D2 is made for high-level players refining their craft, chasing exposure, and proving they belong at the top.</p>
+                        </div>
+                        <div class="cs-card-footer">
+                            <span class="cs-card-stat">120+ Teams</span>
+                            <a href="/register" class="cs-card-btn">Dominate in Comp</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- ── Controls — progress bar + arrows ── -->
+        <div class="cs-carousel-controls">
+            <div class="cs-progress" aria-hidden="true">
+                <div class="cs-progress-fill"></div>
+            </div>
+            <div class="cs-arrows">
+                <button class="cs-prev" aria-label="Previous slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="cs-next" aria-label="Next slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+(function () {
+    const section     = document.querySelector('#divisions-2241');
+    if (!section) return;
+
+    const track       = section.querySelector('.cs-carousel-track');
+    const cards       = section.querySelectorAll('.cs-card');
+    const progressFill = section.querySelector('.cs-progress-fill');
+    const prevBtn     = section.querySelector('.cs-prev');
+    const nextBtn     = section.querySelector('.cs-next');
+
+    const total = cards.length;
+    let current = 0;
+
+    function perView() {
+        return window.innerWidth >= 1024 ? 2 : 1;
+    }
+
+    function maxIndex() {
+        return Math.max(0, total - perView());
+    }
+
+    function updateProgress() {
+        const pct = ((current + perView()) / total) * 100;
+        progressFill.style.width = Math.min(pct, 100) + '%';
+    }
+
+    function goTo(index) {
+        current = Math.max(0, Math.min(index, maxIndex()));
+
+        const card = cards[0];
+        const gap  = parseFloat(getComputedStyle(track).columnGap) || 0;
+        track.style.transform = `translateX(-${(card.offsetWidth + gap) * current}px)`;
+
+        updateProgress();
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= maxIndex();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    window.addEventListener('resize', () => goTo(Math.min(current, maxIndex())), { passive: true });
+
+    goTo(0);
+})();
+</script>
+
+<!-- ============================================ -->
+<!--             Player Testimonials              -->
+<!-- ============================================ -->
+
+<section id="testimonials-3841">
+
+    <!-- ── Background image ── -->
+    <div class="cs-bg" aria-hidden="true">
+        <img src="https://cdn.prod.website-files.com/6921d2c2bd3b56136200df62/6a2325915ed843b2ef10278b_BLR365_May28th103.jpg" alt="">
+    </div>
+
+    <!-- ── Header ── -->
+    <div class="cs-container">
+        <div class="cs-header">
+            <span class="cs-topper">Word on the Court</span>
+            <h2 class="cs-title">Players Talk</h2>
+        </div>
+    </div>
+
+    <!-- ── Row 1 — scrolls left ── -->
+    <div class="cs-marquee-wrap" aria-hidden="true">
+        <div class="cs-marquee cs-marquee-left">
+            <!-- Original set -->
+            <div class="cs-card">
+                <p class="cs-quote">"Signed up not knowing anyone. Two seasons later I've got a squad I run with year-round."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Marcus T.</span>
+                    <span class="cs-division">D4 Rec Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"The game film changed how I watch basketball. I actually study my own footage now."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Kevin L.</span>
+                    <span class="cs-division">D3 Inter Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Refs are consistent, scorekeepers are locked in. You can just focus on hooping."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Andre B.</span>
+                    <span class="cs-division">D5 Rookie Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Championship rings are real. We won last season and they're legit. Wore mine to work."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">James W.</span>
+                    <span class="cs-division">D2 Comp Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"7 games plus playoffs gave us just enough time to find our rhythm and make a run."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Darnell F.</span>
+                    <span class="cs-division">D3 Inter Division</span>
+                </div>
+            </div>
+            <!-- Duplicate set — exact copy for seamless loop -->
+            <div class="cs-card">
+                <p class="cs-quote">"Signed up not knowing anyone. Two seasons later I've got a squad I run with year-round."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Marcus T.</span>
+                    <span class="cs-division">D4 Rec Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"The game film changed how I watch basketball. I actually study my own footage now."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Kevin L.</span>
+                    <span class="cs-division">D3 Inter Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Refs are consistent, scorekeepers are locked in. You can just focus on hooping."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Andre B.</span>
+                    <span class="cs-division">D5 Rookie Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Championship rings are real. We won last season and they're legit. Wore mine to work."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">James W.</span>
+                    <span class="cs-division">D2 Comp Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"7 games plus playoffs gave us just enough time to find our rhythm and make a run."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Darnell F.</span>
+                    <span class="cs-division">D3 Inter Division</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Row 2 — scrolls right ── -->
+    <div class="cs-marquee-wrap" aria-hidden="true">
+        <div class="cs-marquee cs-marquee-right">
+            <!-- Original set -->
+            <div class="cs-card">
+                <p class="cs-quote">"Best rec league in the city. The organization level is something else for a community league."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Tyrese M.</span>
+                    <span class="cs-division">D4 Rec Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Stat tracking is addictive. My whole team checks the leaderboard every week without fail."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Chris P.</span>
+                    <span class="cs-division">D2 Comp Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Came in barely able to keep up. Two seasons later I'm starting every game for my squad."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Sam K.</span>
+                    <span class="cs-division">D5 Rookie Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Full game coverage every week. My family watches the highlights when they can't make it out."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Devon R.</span>
+                    <span class="cs-division">D4 Rec Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"The skill divisions actually work. Every game feels competitive — nobody's getting blown out."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Aaron J.</span>
+                    <span class="cs-division">D3 Inter Division</span>
+                </div>
+            </div>
+            <!-- Duplicate set -->
+            <div class="cs-card">
+                <p class="cs-quote">"Best rec league in the city. The organization level is something else for a community league."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Tyrese M.</span>
+                    <span class="cs-division">D4 Rec Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Stat tracking is addictive. My whole team checks the leaderboard every week without fail."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Chris P.</span>
+                    <span class="cs-division">D2 Comp Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Came in barely able to keep up. Two seasons later I'm starting every game for my squad."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Sam K.</span>
+                    <span class="cs-division">D5 Rookie Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"Full game coverage every week. My family watches the highlights when they can't make it out."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Devon R.</span>
+                    <span class="cs-division">D4 Rec Division</span>
+                </div>
+            </div>
+            <div class="cs-card">
+                <p class="cs-quote">"The skill divisions actually work. Every game feels competitive — nobody's getting blown out."</p>
+                <div class="cs-card-footer">
+                    <span class="cs-name">Aaron J.</span>
+                    <span class="cs-division">D3 Inter Division</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+(function () {
+    const section = document.querySelector('#testimonials-3841');
+    if (!section) return;
+
+    const rows = section.querySelectorAll('.cs-marquee');
+    document.addEventListener('visibilitychange', () => {
+        rows.forEach(row => {
+            row.style.animationPlayState = document.hidden ? 'paused' : '';
+        });
+    });
+})();
+</script>
+
+<!-- ============================================ -->
+<!--                    FAQ                       -->
+<!-- ============================================ -->
+
+<section id="faq-1156">
+    <div class="cs-container">
+
+        <!-- ── Header ── -->
+        <div class="cs-header">
+            <span class="cs-topper">FAQ</span>
+            <h2 class="cs-title">Got Questions?</h2>
+            <p class="cs-subtitle">Everything you need to know before you lace up. Can't find your answer? Reach out and we'll get back to you.</p>
+            <a href="/contact" class="cs-contact-link">Contact Us</a>
+        </div>
+
+        <!-- ── Accordion ── -->
+        <ul class="cs-faq-list" role="list">
+
+            <li class="cs-faq-item">
+                <button class="cs-faq-question" aria-expanded="false">
+                    <span>How do I sign up for a season?</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-faq-answer-wrap">
+                    <div class="cs-faq-answer-inner">
+                        <p class="cs-faq-answer">Head to our Register page, pick your division, and complete the sign-up form. You can register as a full team or as a free agent and we'll place you on a roster that fits your skill level.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-faq-item">
+                <button class="cs-faq-question" aria-expanded="false">
+                    <span>Can I join without a full team?</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-faq-answer-wrap">
+                    <div class="cs-faq-answer-inner">
+                        <p class="cs-faq-answer">Yes. Free agents are welcome every season. We'll match you with a team based on your skill level and schedule preferences. Most free agents end up returning with the same squad the following season.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-faq-item">
+                <button class="cs-faq-question" aria-expanded="false">
+                    <span>How are skill divisions determined?</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-faq-answer-wrap">
+                    <div class="cs-faq-answer-inner">
+                        <p class="cs-faq-answer">New teams fill out a skill assessment during registration. Returning teams are placed based on their previous season record and performance. We evaluate placements after week two and will adjust teams if needed to keep games competitive.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-faq-item">
+                <button class="cs-faq-question" aria-expanded="false">
+                    <span>How does stat tracking work?</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-faq-answer-wrap">
+                    <div class="cs-faq-answer-inner">
+                        <p class="cs-faq-answer">Every game has an official scorekeeper tracking points, rebounds, assists, steals, and blocks for every player. Stats are uploaded to the league portal within 48 hours of each game and are visible to everyone.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-faq-item">
+                <button class="cs-faq-question" aria-expanded="false">
+                    <span>When are game schedules released?</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-faq-answer-wrap">
+                    <div class="cs-faq-answer-inner">
+                        <p class="cs-faq-answer">Full season schedules are released one week before the season starts. You'll receive an email with your game dates, times, and gym locations. Schedules are also available in the league portal at any time.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-faq-item">
+                <button class="cs-faq-question" aria-expanded="false">
+                    <span>What happens if my team doesn't have enough players?</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-faq-answer-wrap">
+                    <div class="cs-faq-answer-inner">
+                        <p class="cs-faq-answer">Teams must have a minimum of five players to start a game. If you're short, you can pull from our free agent pool with 24 hours notice. Forfeits are recorded as a loss and repeated forfeits may affect your playoff seeding.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-faq-item">
+                <button class="cs-faq-question" aria-expanded="false">
+                    <span>How do playoffs work?</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-faq-answer-wrap">
+                    <div class="cs-faq-answer-inner">
+                        <p class="cs-faq-answer">All registered teams qualify for the playoffs. Seeding is based on regular season record. The playoff bracket is single elimination across two weeks, with the championship game and ring ceremony at the end of the final week.</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="cs-faq-item">
+                <button class="cs-faq-question" aria-expanded="false">
+                    <span>What is the refund policy?</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </button>
+                <div class="cs-faq-answer-wrap">
+                    <div class="cs-faq-answer-inner">
+                        <p class="cs-faq-answer">Full refunds are available up to 14 days before the season starts. After that, we offer a 50% credit toward the next season. No refunds are issued once the season is underway. Contact us at support@recessleagues.com with any questions.</p>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</section>
+
+<script>
+(function () {
+    const section = document.querySelector('#faq-1156');
+    if (!section) return;
+
+    const items = section.querySelectorAll('.cs-faq-item');
+
+    items.forEach(item => {
+        const btn    = item.querySelector('.cs-faq-question');
+        const wrap   = item.querySelector('.cs-faq-answer-wrap');
+
+        btn.addEventListener('click', () => {
+            const isOpen = item.classList.contains('cs-active');
+
+            // Close all
+            items.forEach(i => {
+                i.classList.remove('cs-active');
+                i.querySelector('.cs-faq-question').setAttribute('aria-expanded', 'false');
+            });
+
+            // Open clicked if it was closed
+            if (!isOpen) {
+                item.classList.add('cs-active');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+})();
+</script>
+
+<script src="/assets/js/league-1842.js" defer></script>
+{% endblock %}

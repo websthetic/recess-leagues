@@ -1,0 +1,290 @@
+/*-- -------------------------- -->
+<---        Core Styles         -->
+<--- -------------------------- -*/
+
+/* Recess Core Styles + Reset */
+@media only screen and (min-width: 0px) {
+	/* All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
+	:root {
+    /* Recess Athletic Club Brand Colors */
+    --luxuryRed: #940203;
+    --zephyrGold: #ffba43;        
+    --emeraldGreen: #144734;
+    --charcoalBlack: #1A1A1A;     /* now for text/headings, not page bg */
+    --velvetCream: #EFE3C2;       /* now a surface/card tint, not text */
+    --recessBlue: #3143AD;
+    --joltYellow: #E5F744;        /* dark sections only — fades on light bg */
+    --leaguePurple: #893579;
+    --dark: #0d0d0d;
+
+    /* New light-mode additions */
+    --pageBg: #F8F5F0;            /* warm linen — main page background */
+    --headingColor: #1a1a1a;      /* h1–h3 on light sections */
+    --bodyTextColor: #5a5551;     /* body copy on cream/white */
+
+    /* Typography — unchanged */
+    --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+    --headerFontSize: clamp(1.9375rem, 3.9vw, 5rem);
+    --bodyFontSize: 1rem;
+    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+
+    --headerFont: "Bio Sans Bold", Arial, sans-serif;
+    --topperFont: "Roboto Mono Regular", Arial, sans-serif;
+    --bodyFont: "Nimbus Sans Regular", Arial, sans-serif;
+    --buttonFont: "Roboto Mono Regular", Arial, sans-serif;
+}
+
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		overflow-x: clip;
+		font-family: var(--bodyFont);
+		font-size: 100%;
+		transition: background-color 0.3s;
+		color: var(--bodyTextColor);
+		background-color: var(--charcoalBlack);
+	}
+
+	*,
+	*:before,
+	*:after {
+		/* prevents padding from affecting height and width */
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	.cs-topper {
+		font-size: var(--topperFontSize);
+		font-family: var(--topperFont);
+		line-height: 1.2em;
+		text-transform: uppercase;
+		text-align: inherit;
+		letter-spacing: 0.1em;
+		color: var(--zephyrGold);
+		margin-bottom: 0.25rem;
+		display: block;
+	}
+
+	.cs-title {
+		font-size: var(--headerFontSize);
+		font-family: var(--headerFont);
+		text-transform: uppercase;
+		line-height: 1.2em;
+		text-align: inherit;
+		max-width: 43.75rem;
+		margin: 0 0 1rem 0;
+		color: var(--headerColor);
+		position: relative;
+	}
+
+	.cs-text {
+		font-size: var(--bodyFontSize);
+		line-height: 1.5em;
+		text-align: inherit;
+		width: 100%;
+		max-width: 40.625rem;
+		margin: 0;
+		color: var(--bodyTextColor);
+	}
+}
+
+/* Components + Utilities */
+@media only screen and (min-width: 0px) {
+	// Hidden screen reader skip nav button
+	.skip {
+		z-index: -1111111;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+
+.cs-button-solid {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.625rem;
+    padding: 0 1.375rem;
+    border-radius: 6.25rem;
+    border: none;
+    background: #ffffff;
+    color: var(--charcoalBlack);
+    font-family: var(--buttonFont);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+
+    &:hover {
+        background: var(--zephyrGold);
+        color: var(--charcoalBlack);
+        transform: translateY(-1px);
+    }
+}
+
+.cs-button-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.625rem;
+    padding: 0 1.375rem;
+    border-radius: 6.25rem;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    background: transparent;
+    color: #ffffff;
+    font-family: var(--buttonFont);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+
+    &:hover {
+        background: rgba(255,255,255,0.12);
+        border-color: #ffffff;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+}
+
+	
+
+	// Utilities - small classes useful in various common situations
+	.cs-color {
+		color: var(--luxuryRed);
+	}
+
+	.cs-bold {
+		font-weight: 700;
+	}
+
+	.cs-hide-on-mobile {
+		display: none !important;
+	}
+
+	.cs-dark,
+	.dark {
+		display: none !important;
+	}
+
+	body.dark-mode {
+		.cs-light,
+		.light {
+			display: none !important;
+		}
+
+		.cs-dark,
+		.dark {
+			display: block !important;
+		}
+
+		.cs-button-outline {
+			border-color: #fff;
+			color: #fff;
+		}
+	}
+}
+
+/* Desktop Utilities */
+@media only screen and (min-width: 64rem) {
+	.cs-hide-on-mobile {
+		display: block !important;
+	}
+
+	.cs-hide-on-desktop {
+		display: none !important;
+	}
+}
+
+/* Base Element Styles */
+@media only screen and (min-width: 0px) {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--headerFont);
+		line-height: 1.2em;
+		color: var(--headerColor);
+	}
+
+	p,
+	li,
+	a {
+		font-size: (16/16rem);
+		line-height: 1.5em;
+	}
+
+	p,
+	li {
+		color: var(--bodyTextColor);
+
+		a {
+			color: var(--primary);
+		}
+	}
+
+	a,
+	button {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	body.dark-mode {
+		background-color: var(--dark);
+
+		p,
+		li,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: #fff;
+		}
+	}
+}
+
+/* Fonts */
+@media only screen and (min-width: 0px) {
+	// Grab your fonts to locally host from https://gwfh.mranftl.com/fonts
+	/* Roboto-Mono-Regular-400 - latin */
+	@font-face {
+		font-style: normal;
+		font-family: "Roboto Mono Regular";
+		font-weight: 400;
+		font-display: swap;
+		src: local(""), url("/assets/fonts/roboto-mono-regular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-mono-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+
+	/* NimbusSanL-Regular - latin */
+	@font-face {
+		font-style: normal;
+		font-family: "Nimbus Sans Regular";
+		font-weight: 400;
+		font-display: swap;
+		src: local(""), url("/assets/fonts/NimbusSanL-Reg.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/NimbusSanL-Reg.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+
+	/* Bio-Sans-Bold-700 - latin */
+	@font-face {
+		font-style: bold;
+		font-family: "Bio Sans Bold";
+		font-weight: 700;
+		font-display: swap;
+		src: local(""), url("/assets/fonts/bio-sans-bold.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/bio-sans-bold.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+}
+

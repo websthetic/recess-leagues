@@ -1,0 +1,91 @@
+ <!-- ============================================ -->
+    <!--                 Navigation                   -->
+    <!-- ============================================ -->
+    <header id="cs-navigation">
+      <div class="cs-container">
+
+        <!-- Nav Logo -->
+        <a href="/" class="cs-logo" aria-label="Return to Recess Home page">
+          <svg xmlns="http://www.w3.org/2000/svg" width="210" height="29" viewBox="0 0 210 29" role="img" aria-label="Recess">
+            <title>Recess</title>
+            <text
+              x="0"
+              y="24"
+              font-family="'Bio Sans Bold', sans-serif"
+              font-size="28"
+              font-weight="400"
+              letter-spacing="4"
+              fill="#ffffff"
+            >RECESS&#8482;</text>
+          </svg>
+        </a>
+
+        <!-- Navigation List -->
+        <nav class="cs-nav" aria-label="main navigation">
+
+          <button class="cs-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="cs-ul-wrapper" aria-label="mobile menu toggle" aria-haspopup="menu">
+            <span class="cs-box" aria-hidden="true">
+              <span class="cs-line cs-line1"></span>
+              <span class="cs-line cs-line2"></span>
+              <span class="cs-line cs-line3"></span>
+            </span>
+          </button>
+
+          <div class="cs-ul-wrapper" id="cs-ul-wrapper">
+
+            <button
+              class="cs-menu-close"
+              aria-label="Close menu"
+              onclick="
+                var nav = document.getElementById('cs-navigation');
+                var toggle = document.getElementById('mobile-menu-toggle');
+                if (nav) nav.classList.remove('cs-active');
+                if (toggle) { toggle.classList.remove('cs-active'); toggle.setAttribute('aria-expanded','false'); }
+                document.body.classList.remove('cs-open');
+              "
+            >✕</button>
+
+            <ul class="cs-ul">
+              <li class="cs-li">
+                <a href="/" class="cs-li-link">Home</a>
+              </li>
+              <li class="cs-li">
+                <a href="/" class="cs-li-link">Programs</a>
+              </li>
+              <li class="cs-li">
+                <a href="/" class="cs-li-link">Memberships</a>
+              </li>
+              <li class="cs-li">
+                <a href="/" class="cs-li-link">About</a>
+              </li>
+              <li class="cs-li">
+                <a href="/" class="cs-li-link">Book Eval</a>
+              </li>
+            </ul>
+
+            <button class="cs-button-solid cs-nav-button cs-mobile-cta" onclick="openCourtModal()">
+                <span class="cs-button-circle" aria-hidden="true"></span>
+                <span class="cs-button-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
+                <span class="cs-button-label">Book a Court</span>
+            </button>
+
+          </div>
+        </nav>
+
+        <button class="cs-button-solid cs-nav-button cs-desktop-cta" onclick="openCourtModal()">
+            <span class="cs-button-circle" aria-hidden="true"></span>
+            <span class="cs-button-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+            </span>
+            <span class="cs-button-label">Book a Court</span>
+        </button>
+
+      </div>
+    </header>
+
