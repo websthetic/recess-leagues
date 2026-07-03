@@ -1436,3 +1436,202 @@
         .cs-img-panel    { transition: none; }
     }
 }
+
+/*-- -------------------------- -->
+<---          The Season         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #season-4152 {
+        padding: var(--sectionPadding);
+        position: relative;
+        overflow: hidden;
+        background-color: var(--charcoalBlack);
+
+        .cs-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(4rem, 9vw, 8rem);
+        }
+
+        .cs-row {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: clamp(3rem, 6vw, 5rem);
+        }
+
+        .cs-content {
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .cs-topper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+
+            &:before {
+                content: "";
+                width: 0.5rem;
+                height: 0.5rem;
+                border-radius: 50%;
+                background-color: var(--luxuryRed);
+                display: block;
+                flex: none;
+            }
+        }
+
+        .cs-title {
+            max-width: 18ch;
+            margin: 0 0 1.75rem 0;
+            color: var(--pageBg);
+        }
+
+        .cs-text {
+            max-width: 38rem;
+            line-height: 2em;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .cs-image-group {
+            position: relative;
+            width: 100%;
+            max-width: 39rem;
+            padding: 0.5rem;
+            border-radius: 1.75rem;
+        }
+
+        .cs-video {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            object-fit: cover;
+        }
+
+       .cs-image-label {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.6rem 1.3rem;
+    border-radius: 6.25rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-family: var(--bodyFont);
+    font-size: 0.9375rem;
+    line-height: 1;
+}
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #season-4152 {
+        .cs-row {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: clamp(3rem, 6vw, 6rem);
+
+            /* Alternate: even rows put the video on the left */
+            &:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        .cs-content {
+            width: 58%;
+            max-width: 34rem;
+        }
+
+        .cs-image-group {
+            width: 38%;
+            max-width: 39rem;
+        }
+    }
+}
+
+/*-- -------------------------- -->
+<---           Marquee           -->
+<--- -------------------------- -*/
+
+/* Keyframes must live at global scope to compile reliably */
+@keyframes cs-marquee-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #marquee-5230 {
+        width: 100%;
+        padding: clamp(1.5rem, 3vw, 2.75rem) 0;
+        overflow: hidden;
+        background-color: var(--charcoalBlack);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+        .cs-marquee {
+            width: 100%;
+            overflow: hidden;
+            /* Fade the edges so text enters/exits softly */
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0,
+                #000 8%,
+                #000 92%,
+                transparent 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                transparent 0,
+                #000 8%,
+                #000 92%,
+                transparent 100%
+            );
+        }
+
+        .cs-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    will-change: transform;
+    /* animation removed — driven by JS */
+}
+
+        .cs-item {
+            flex: none;
+            padding: 0 clamp(1.5rem, 3vw, 3rem);
+            font-family: var(--headerFont);
+            font-size: clamp(2rem, 5.5vw, 4.5rem);
+            line-height: 1;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: var(--pageBg);
+        }
+
+        .cs-dot {
+            flex: none;
+            width: clamp(0.5rem, 1vw, 0.85rem);
+            height: clamp(0.5rem, 1vw, 0.85rem);
+            border-radius: 50%;
+            background-color: var(--luxuryRed);
+        }
+    }
+}
