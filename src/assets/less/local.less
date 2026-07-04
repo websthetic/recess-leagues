@@ -134,7 +134,7 @@
 <---       League Experience     -->
 <--- -------------------------- -*/
 
-/* Mobile - 360px (touch default: everything visible, stacked) */
+/* Mobile - 360px (touch default: image card with content overlaid) */
 @media only screen and (min-width: 0rem) {
     #league-1842 {
         position: relative;
@@ -149,6 +149,18 @@
             z-index: 0;
             pointer-events: none;
         }
+
+        .cs-cursor-cta svg {
+    display: none;
+}
+
+.cs-cursor-cta {
+    display: none;
+}
+
+.cs-feature-cta {
+    display: none;
+}
 
         .cs-bg {
             position: absolute;
@@ -202,19 +214,51 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            // border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        /* ── Individual feature — mobile: stacked, everything visible ── */
-        .cs-feature {
-            // border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 1.25rem 0;
             display: flex;
             flex-direction: column;
-            gap: 0.625rem;
+            gap: 1rem;
+        }
+
+        /* ── Individual feature — mobile: fixed-height image card, content overlaid ── */
+        .cs-feature {
+            position: relative;
+            height: clamp(20rem, 62vw, 24rem);   /* fixed height → every card equal */
+            padding: clamp(1.5rem, 5vw, 2rem);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.875rem;
+            text-align: center;
+        }
+
+        /* ── Per-feature image — mobile only ── */
+        .cs-feature-img {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Overlay for legibility */
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: rgba(13,13,13,0.62);
+            }
         }
 
         .cs-feature-title {
+            position: relative;
+            z-index: 1;
             font-family: var(--headerFont);
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             text-transform: uppercase;
@@ -225,9 +269,11 @@
 
         /* ── Detail — always visible on mobile ── */
         .cs-feature-detail {
+            position: relative;
+            z-index: 1;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             gap: 0.875rem;
             margin-top: 0.25rem;
         }
@@ -239,6 +285,7 @@
             text-transform: uppercase;
             line-height: 1.7;
             color: rgba(255,255,255,0.55);
+            text-align: center;
             margin: 0;
             max-width: 28rem;
         }
@@ -303,12 +350,24 @@
     }
 }
 
-/* Desktop hover interaction — only for true pointer devices */
-@media (hover: hover) and (pointer: fine) {
+/* Desktop hover interaction — only for true pointer devices at desktop width.
+   The min-width guard stops this block from clobbering the mobile image cards
+   on narrow screens that still report pointer:fine (devtools, hybrid laptops). */
+@media (hover: hover) and (pointer: fine) and (min-width: 64rem) {
     #league-1842 {
+
+        /* Restore tight desktop stacking (undo mobile card gap) */
+        .cs-features { gap: 0; }
+
+        /* Desktop uses the .cs-bg-wrap crossfade — hide the inline card image */
+        .cs-feature-img { display: none; }
+
         /* ── Feature: switch to centered overlay layout ── */
         .cs-feature {
             position: relative;
+            height: auto;              /* undo the fixed mobile height */
+            border-radius: 0;          /* undo the mobile card radius */
+            overflow: visible;         /* undo the mobile card clip */
             flex-direction: row;
             align-items: center;
             justify-content: center;
